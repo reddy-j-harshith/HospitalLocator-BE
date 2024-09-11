@@ -8,11 +8,11 @@ module.exports = async function (context, req) {
 
     try {
         // Check if the request method is POST
-        if (req.method === "GET") {
+        if (req.method === "POST") {
 
             // TODO : Add 'Address' column in the query
              const query = `
-                 SELECT ID, Name, Latitude, Longitude, SpecialitiesAvailable FROM Hospitals;
+                 SELECT ID, Name, Latitude, Longitude, SpecialitiesAvailable, Address FROM Hospitals;
              `;
             
              const result = await pool.request()
@@ -25,7 +25,7 @@ module.exports = async function (context, req) {
         } else {
             context.res = {
                 status: 400,
-                body: { message: 'Please send a GET request' }
+                body: { message: 'Please send a POST request' }
             };
         }
     } catch (error) {
