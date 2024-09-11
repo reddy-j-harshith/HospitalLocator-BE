@@ -8,7 +8,7 @@ module.exports = async function (context, req) {
 
     try {
         // Check if the request method is POST
-        if (req.method === "POST") {
+        if (req.method === "GET") {
 
             // TODO : Add 'Address' column in the query
              const query = `
@@ -25,7 +25,7 @@ module.exports = async function (context, req) {
         } else {
             context.res = {
                 status: 400,
-                body: { message: 'Please send a POST request' }
+                body: { message: 'Please send a GET request' }
             };
         }
     } catch (error) {
